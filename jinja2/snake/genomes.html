@@ -1,0 +1,55 @@
+{% set active="download" %}
+{% extends "snake/base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ static('snake/css/dataTables.bootstrap5.min.css') }}">
+{% endblock %}
+{% block main %}
+<div class="row">
+	<div class="col">
+		<table id="genomes-table" class="table table-striped table-sm" style="width: 100%">
+			<thead>
+				<tr>
+					<td>Number</td>
+					<td>Family</td>
+					<td>Scientifc Name</td>
+					<td>Common Name</td>
+					<td>Scaffold N50(bp)</td>
+					<td>Contig N50(bp)</td>
+					<td>Genome Version</td>
+					<td>Assembly Level</td>
+					<td>Genome Download</td>
+					<td>Annotation Download</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for g in gs %}
+				<tr>
+					<td>{{ g.pk }}</td>
+					<td>{{ g.species.family }}</td>
+					<td>{{ g.species.scientific_name }}</td>
+					<td>{{ g.species.common_name }}</td>
+					<td>{{ g.scaffold_n50 }}</td>
+					<td>{{ g.contig_n50 }}</td>
+					<td>{{ g.genome_version }}</td>
+					<td><a href="{{ g.genome_link }}">download</a></td>
+					<td><a href="{{ g.annot_link }}">download</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{{ static('snake/js/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ static('snake/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ static('snake/js/dataTables.bootstrap5.min.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#genomes-table').DataTable({
+		ordering: false
+	});
+});
+</script>
+{% endblock %}

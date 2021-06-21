@@ -1,0 +1,18 @@
+{% set active="index" %}
+{% extends "snake/base.html" %}
+{% block title %}Snake genome database{% endblock %}
+{% block main %}
+<div class="row">
+	<div class="col-lg-12">
+		<p class="lh-lg">Snakes, as known as the limbless and elongated crawlers, successfully invaded almost all continents except for the polar regions ( 2016 nc1) with extant 3800 species spanning more than 30 families (database). They are efficient hunters and function as a significant balancer in the ecosystem. Since derived from their burrowing ancestor, snakes have undergone a massive adaptive evolution as body form, chemo and thermo-perception, eating behavior and sexual reproductive systems, which all together distinguish them from the majority of other squamates (lizards and worm lizards). In the course of the process, local adaption occurred in some snake lineages: The eyes degenerated snake-blind snakes, keep burrowing lifestyle to ants and ant eggs eating only; Infra-red sensitive pythons and vipers specialized lip pits and pits to enhance their thermo-perception; and the “chemist”: venomous snakes, creating an exquisite venomous system for preying and defense. </p>
+	</div>
+</div>
+<div class="row mt-5">
+	<div class="col-lg-6">
+		<img src="{{ static('snake/img/tree.png') }}" class="img-fluid">
+	</div>
+	<div class="col-lg-6">
+		<img src="{{ static('snake/img/snakes.png') }}" class="img-fluid">
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="{{ static('snake/css/bootstrap.min.css') }}">
+	{% block head %}{% endblock %}
+	<link rel="stylesheet" href="{{ static('snake/css/style.css') }}">
+</head>
+<body>
+	<div class="header py-4">
+		<div class="container">
+			<div class="d-flex flex-row align-items-center">
+				<div>
+					<img src="{{ static('snake/img/logo.jpg') }}" width="100" class="img-fluid ">
+				</div>
+				<div class="ms-3">
+					<span class="h2 fst-italic">Snake Multiomic Database</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow" id="menubar">
+		<div class="container">
+			<ul class="navbar-nav">
+				<li class="nav-item pe-3">
+					<a href="{{ url('snake:index') }}" class="nav-link {% if active=='index' %}active{% endif %}">Home</a>
+				</li>
+				<li class="nav-item dropdown pe-3">
+					<a class="nav-link dropdown-toggle {% if active=='family' %}active{% endif %}" href="#" id="family-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Families</a>
+					<ul class="dropdown-menu" aria-labelledby="family-dropdown">
+						{% for f in families %}
+						<li>
+							<a href="{{ url('snake:family', kwargs={'name': f}) }}" class="dropdown-item">{{ f }}</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</li>
+				<li class="nav-item pe-3">
+					<a href="{{ url('snake:genes') }}" class="nav-link {% if active=='genes' %}active{% endif %}">Genes</a>
+				</li>
+				<li class="nav-item dropdown pe-3">
+					<a class="nav-link dropdown-toggle {% if active=='tool' %}active{% endif %}" href="#" id="tool-dropdown" role="button" data-bs-toggle="dropdown" aria-expaned="false">Tools</a>
+					<ul class="dropdown-menu" aria-labelledby="tool-dropdown">
+						<li>
+							<a href="" class="dropdown-item">Blat</a>
+						</li>
+						<li>
+							<a href="" class="dropdown-item">Blast</a>
+						</li>
+						<li>
+							<a href="" class="dropdown-item">Table Browser</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item dropdown pe-3">
+					<a class="nav-link dropdown-toggle {% if active=='download' %}active{% endif %}" href="#" id="download-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Downloads</a>
+					<ul class="dropdown-menu" aria-labelledby="download-dropdown">
+						<li>
+							<a href="{{ url('snake:genomes') }}" class="dropdown-item">Genomics</a>
+						</li>
+						<li>
+							<a href="{{ url('snake:epigenomes') }}" class="dropdown-item">Epigenomics</a>
+						</li>
+						<li>
+							<a href="{{ url('snake:transcriptomes') }}" class="dropdown-item">Transcriptomics</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item pe-3">
+					<a href="" class="nav-link">Documentation</a>
+				</li>
+				<li class="nav-item pe-3">
+					<a href="" class="nav-link">About us</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container py-5">
+		{% block main %}{% endblock %}
+	</div>
+	<footer class="border-top text-center">
+		<div class="container py-5">
+			<p>Copyright &copy;2021 Chengdu Institute of Biology All Rights Reserved</p>
+		</div>
+	</footer>
+	<script src="{{ static('snake/js/bootstrap.min.js') }}"></script>
+	{% block script %}{% endblock %}
+</body>
+</html>

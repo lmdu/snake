@@ -1,0 +1,47 @@
+{% set active="download" %}
+{% extends "snake/base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ static('snake/css/dataTables.bootstrap5.min.css') }}">
+{% endblock %}
+{% block main %}
+<div class="row">
+	<div class="col">
+		<table id="epigenomes-table" class="table table-striped table-sm" style="width: 100%">
+			<thead>
+				<tr>
+					<td>Number</td>
+					<td>Family</td>
+					<td>Scientific Name</td>
+					<td>Common Name</td>
+					<td>Reads</td>
+					<td>Download</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for e in es %}
+				<tr>
+					<td>{{ e.pk }}</td>
+					<td>{{ e.species.scientific_name }}</td>
+					<td>{{ e.species.common_name }}</td>
+					<td>{{ e.reads }}</td>
+					<td><a href="{{ e.link }}">download</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{{ static('snake/js/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ static('snake/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ static('snake/js/dataTables.bootstrap5.min.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#epigenomes-table').DataTable({
+		ordering: false
+	});
+});
+</script>
+{% endblock %}
