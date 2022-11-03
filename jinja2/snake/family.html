@@ -8,14 +8,14 @@
 	<div class="row">
 		{% if family.tree %}
 		<div class="col-lg-6 lh-lg">
-			{{ family.description.html | safe }}
+			{{ family.description | safe }}
 		</div>
 		<div class="col-lg-6">
 			<img src="{{ family.tree.url }}" class="img-fluid">
 		</div>
 		{% else %}
 		<div class="col lh-lg">
-			{{ family.description.html | safe }}
+			{{ family.description | safe }}
 		</div>
 		{% endif %}
 	</div>

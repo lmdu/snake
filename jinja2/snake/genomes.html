@@ -1,4 +1,4 @@
-{% set active="download" %}
+{% set active="genomes" %}
 {% extends "snake/base.html" %}
 {% block head %}
 <link rel="stylesheet" href="{{ static('snake/css/dataTables.bootstrap5.min.css') }}">
@@ -17,12 +17,12 @@
 					<td>Contig N50(bp)</td>
 					<td>Genome Version</td>
 					<td>Assembly Level</td>
-					<td>Genome Download</td>
-					<td>Annotation Download</td>
+					<td>Genome</td>
+					<td>Annotation</td>
 				</tr>
 			</thead>
 			<tbody>
-				{% for g in gs %}
+				{% for g in genomes %}
 				<tr>
 					<td>{{ g.pk }}</td>
 					<td>{{ g.species.family }}</td>
@@ -31,8 +31,9 @@
 					<td>{{ g.scaffold_n50 }}</td>
 					<td>{{ g.contig_n50 }}</td>
 					<td>{{ g.genome_version }}</td>
-					<td><a href="{{ g.genome_link }}">download</a></td>
-					<td><a href="{{ g.annot_link }}">download</a></td>
+					<td>{{ g.get_assembly_level_display() }}</td>
+					<td><a href="{{ g.genome_link }}" class="btn btn-sm btn-primary">download</a></td>
+					<td><a href="{{ g.annot_link }}" class="btn btn-sm btn-info">download</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>

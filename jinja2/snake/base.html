@@ -11,9 +11,9 @@
 	<div class="header py-4">
 		<div class="container">
 			<div class="d-flex flex-row align-items-center">
-				<div>
+				<!--<div>
 					<img src="{{ static('snake/img/logo.jpg') }}" width="100" class="img-fluid ">
-				</div>
+				</div>-->
 				<div class="ms-3">
 					<span class="h2 fst-italic">Snake Multiomic Database</span>
 				</div>
@@ -39,8 +39,8 @@
 				<li class="nav-item pe-3">
 					<a href="{{ url('snake:genes') }}" class="nav-link {% if active=='genes' %}active{% endif %}">Genes</a>
 				</li>
-				<li class="nav-item dropdown pe-3">
-					<a class="nav-link dropdown-toggle {% if active=='tool' %}active{% endif %}" href="#" id="tool-dropdown" role="button" data-bs-toggle="dropdown" aria-expaned="false">Tools</a>
+				<li class="nav-item pe-3">
+					<!--<a class="nav-link dropdown-toggle {% if active=='tool' %}active{% endif %}" href="#" id="tool-dropdown" role="button" data-bs-toggle="dropdown" aria-expaned="false">Tools</a>
 					<ul class="dropdown-menu" aria-labelledby="tool-dropdown">
 						<li>
 							<a href="" class="dropdown-item">Blat</a>
@@ -51,9 +51,17 @@
 						<li>
 							<a href="" class="dropdown-item">Table Browser</a>
 						</li>
-					</ul>
+					</ul>-->
+					<a href="#" class="nav-link">JBrowser</a>
 				</li>
-				<li class="nav-item dropdown pe-3">
+				<li class="nav-item pe-3">
+					<a href="{{ url('snake:genomes') }}" class="nav-link {% if active=='genomes' %}active{% endif %}">Genomics</a>
+				</li>
+				<li class="nav-item pe-3">
+					<a href="{{ url('snake:transcriptomes') }}" class="nav-link {% if active=='transcriptomes' %}active{% endif %}">Transcriptomics</a>
+				</li>
+
+				<!--<li class="nav-item dropdown pe-3">
 					<a class="nav-link dropdown-toggle {% if active=='download' %}active{% endif %}" href="#" id="download-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Downloads</a>
 					<ul class="dropdown-menu" aria-labelledby="download-dropdown">
 						<li>
@@ -66,13 +74,13 @@
 							<a href="{{ url('snake:transcriptomes') }}" class="dropdown-item">Transcriptomics</a>
 						</li>
 					</ul>
-				</li>
-				<li class="nav-item pe-3">
+				</li>-->
+				<!--<li class="nav-item pe-3">
 					<a href="" class="nav-link">Documentation</a>
 				</li>
 				<li class="nav-item pe-3">
 					<a href="" class="nav-link">About us</a>
-				</li>
+				</li>-->
 			</ul>
 		</div>
 	</nav>

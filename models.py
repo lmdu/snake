@@ -1,11 +1,10 @@
 from django.db import models
-from django_quill.fields import QuillField
 
 # Create your models here.
 class Family(models.Model):
 	name = models.CharField(max_length=30, help_text="Family name")
 	tree = models.ImageField(upload_to='snake/treeimg', blank=True, help_text="Tree image file")
-	description = QuillField(help_text="Family detailed description")
+	description = models.TextField(help_text="Family detailed description", blank=True)
 	created = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):

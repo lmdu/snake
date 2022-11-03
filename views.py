@@ -31,11 +31,12 @@ def genes(request):
 		search = request.POST.get('search[value]')
 
 		gs = Gene.objects.filter(species__pk=species)
+
 		total_count = gs.count()
 
 		if search:
 			gs = gs.filter(Q(symbol__icontains=search) | Q(gene_id__icontains=search) |
-							Q(gene_name__icontains=search) | Q(biotype__icontains=search))
+							 Q(biotype__icontains=search))
 
 			filter_count = gs.count()
 		else:
@@ -44,7 +45,7 @@ def genes(request):
 		data = []
 		for g in gs[start:start+length]:
 			data.append((g.chrom, g.start, g.end, g.strand, g.cds_len,
-						 g.exon_num, g.symbol, g.gene_id, g.biotype, g.gene_name))
+						 g.exon_num, g.symbol, g.gene_id, g.biotype))
 
 		return JsonResponse({
 			'draw': draw,
@@ -57,27 +58,6 @@ def genomes(request):
 	if request.method == 'GET':
 		gs = GenomeDownload.objects.all()
 		return menu_render(request, 'snake/genomes.html', {'genomes': gs})
-	'''
-	elif request.method == 'POST':
-		draw = int(request.POST.get('draw'))
-		gs = GenomeDownload.objects.all()
-		total = gs.count()
-
-		data = []
-		for g in gs:
-			data.append((g.pk, g.species.family, g.species.scientific_name,
-				g.species.common_name, g.scaffold_n50, g.contig_n50, g.genome_version, 
-				'<a href="{}">download</a>'.format(g.genome_link) if g.genome_link else 'NA',
-				'<a href="{}">download</a>'.format(g.annot_link) if g.annot_link else 'NA'
-			))
-
-		return JsonResponse({
-			'draw': draw,
-			'recordsTotal': total,
-			'recordsFiltered': total,
-			'data': data
-		})
-	'''
 
 def epigenomes(request):
 	if request.method == 'GET':
