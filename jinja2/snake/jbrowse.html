@@ -1,4 +1,4 @@
-{% set active="transcriptomes" %}
+{% set active="browsers" %}
 {% extends "snake/base.html" %}
 {% block main %}
 <div class="row">
@@ -7,14 +7,14 @@
 			<thead>
 				<tr>
 					<th>Species</th>
-					<th>File Download</th>
+					<th>JBrowser Link</th>
 				</tr>
 			</thead>
 			<tbody class="table-group-divider">
-				{% for t in ts %}
+				{% for j in js %}
 				<tr>
-					<td>{{ t.species.scientific_name }}</td>
-					<td><a href="{{ t.link }}">{{ t.name }}</a></td>
+					<td>{{ j.species.scientific_name }}</td>
+					<td><a href="{{ j.url }}">{{ j.url }}</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>

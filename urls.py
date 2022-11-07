@@ -10,4 +10,5 @@ urlpatterns = [
 	path('genomes', views.genomes, name='genomes'),
 	path('epigenomes', views.epigenomes, name='epigenomes'),
 	path('transcriptomes', views.transcriptomes, name='transcriptomes'),
+	path('browsers', views.browsers, name='browsers')
 ]

@@ -52,7 +52,7 @@
 							<a href="" class="dropdown-item">Table Browser</a>
 						</li>
 					</ul>-->
-					<a href="#" class="nav-link">JBrowser</a>
+					<a href="{{ url('snake:browsers') }}" class="nav-link {% if active=='browsers' %}active{% endif %}">JBrowse</a>
 				</li>
 				<li class="nav-item pe-3">
 					<a href="{{ url('snake:genomes') }}" class="nav-link {% if active=='genomes' %}active{% endif %}">Genomics</a>

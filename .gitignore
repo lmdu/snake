@@ -41,3 +41,5 @@ migrations/__pycache__/0003_auto_20210511_0416.cpython-38.pyc
 migrations/__pycache__/__init__.cpython-36.pyc
 migrations/__pycache__/__init__.cpython-38.pyc
 data/scvpn.exe
+migrations/0004_auto_20221107_1054.py
+migrations/__pycache__/0004_auto_20221107_1054.cpython-38.pyc

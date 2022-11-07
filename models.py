@@ -45,7 +45,6 @@ class Gene(models.Model):
 	exon_num = models.IntegerField(help_text="exon number")
 	symbol = models.CharField(max_length=30, help_text="Gene symbol")
 	gene_id = models.CharField(max_length=30, help_text="Gene ID number")
-	gene_name = models.CharField(max_length=255, help_text="Gene long name", blank=True)
 	biotype = models.CharField(max_length=100, help_text="Gene biotype", blank=True)
 	ncbi_id = models.CharField(max_length=30, help_text="NCBI gene ID", blank=True)
 	species = models.ForeignKey(Species, on_delete=models.CASCADE)
@@ -65,6 +64,11 @@ class EpigenomeDownload(models.Model):
 	link = models.CharField(max_length=255)
 	species = models.ForeignKey(Species, on_delete=models.CASCADE)
 
+class TranscriptomeDownload(models.Model):
+	name = models.CharField(max_length=255, help_text="File name")
+	link = models.CharField(max_length=255, help_text="Download link")
+	species = models.ForeignKey(Species, on_delete=models.CASCADE)
+
 class GenomeDownload(models.Model):
 	LEVELS = [
 		(0, 'unknown'),
@@ -79,4 +83,8 @@ class GenomeDownload(models.Model):
 	genome_version = models.CharField(max_length=20, blank=True)
 	genome_link = models.CharField(max_length=255, help_text="Genome download link")
 	annot_link = models.CharField(max_length=255, help_text="Genome annotation download link")
+	species = models.ForeignKey(Species, on_delete=models.CASCADE)
+
+class GenomeBrowser(models.Model):
+	url = models.CharField(max_length=255, help_text="Genome browser url")
 	species = models.ForeignKey(Species, on_delete=models.CASCADE)

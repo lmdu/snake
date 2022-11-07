@@ -62,11 +62,14 @@ def genomes(request):
 def epigenomes(request):
 	if request.method == 'GET':
 		es = EpigenomeDownload.objects.all()
-		return menu_render(request, 'snake/epigenomes.html', {'epigenomes': es})
+		return menu_render(request, 'snake/epigenomes.html', {'es': es})
 
 def transcriptomes(request):
 	if request.method == 'GET':
-		return menu_render(request, 'snake/transcriptomes.html')
-	elif request.method == 'POST':
-		return JsonResponse({})
+		ts = TranscriptomeDownload.objects.all()
+		return menu_render(request, 'snake/transcriptomes.html', {'ts': ts})
 
+def browsers(request):
+	if request.method == 'GET':
+		js = GenomeBrowser.objects.all()
+		return menu_render(request, 'snake/jbrowse.html', {'js': js})

@@ -9,7 +9,6 @@
 		<table id="genomes-table" class="table table-striped table-sm" style="width: 100%">
 			<thead>
 				<tr>
-					<td>Number</td>
 					<td>Family</td>
 					<td>Scientifc Name</td>
 					<td>Common Name</td>
@@ -24,7 +23,6 @@
 			<tbody>
 				{% for g in genomes %}
 				<tr>
-					<td>{{ g.pk }}</td>
 					<td>{{ g.species.family }}</td>
 					<td>{{ g.species.scientific_name }}</td>
 					<td>{{ g.species.common_name }}</td>
